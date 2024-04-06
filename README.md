@@ -1,1 +1,1 @@
-#Diamond Game Pygame Implementation
+Diamond Game Pygame Implementation
