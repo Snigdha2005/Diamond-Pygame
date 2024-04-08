@@ -18,9 +18,8 @@ GREEN = (0, 100, 0)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 
-# Define font
+
 font = pygame.font.SysFont(None, 56)
-# Load card images
 
 CARD_FOLDER = "Cards/Playing Cards/PNG-cards-1.3/"
 card_images = {}
@@ -208,7 +207,6 @@ diamond_card_images = card_images['diamonds']
 
 def pick_diamond(cards):
     return random.choice(cards)
-#print(pick_diamond(cards))
 
 def bid_solver(diamond_card, player_cards, option, opponent_bids, scores):
     if option == 1:
@@ -283,7 +281,6 @@ def scoreboard(diamond_card, bid1, bid2):
         scores = [scores[_] + all_cards[diamond_card] / 2 for _ in range(2)]
     return 
 
-# Winner function
 def winner():
     m = max(scores)
     if m == scores[0] and m != scores[1]:
@@ -292,7 +289,7 @@ def winner():
         return "Player 2"
     return "Draw"
 
-# Main game loop
+
 def main_game(screen, font, option1, option2, sub_option2, player_suit, computer_suit):
     global scores
     player1_bids = []
@@ -302,7 +299,6 @@ def main_game(screen, font, option1, option2, sub_option2, player_suit, computer
     player2_cards = list(all_cards.keys())
     for i in range(13):
         diamond_card = pick_diamond(cards)
-        #bid1 = bid_solver(diamond_card, player1_cards, option1, player2_bids, scores)
         '''screen.fill(GREEN)
         # Display diamond card
         player_text = font.render(f"Player 1 Cards: ", True, WHITE)
@@ -333,8 +329,6 @@ def main_game(screen, font, option1, option2, sub_option2, player_suit, computer
         player_text = font.render(f"Player 2 Cards: ", True, WHITE)
         screen.blit(player_text, (20, 520))
         for i in player1_cards:
-            #print(len(card_images['hearts']))
-            #print(all_cards[i] - 2)
             screen.blit(card_images[player_suit][all_cards[i] - 2], (300+((all_cards[i]-2)*60), 350))
         for i in player2_cards:
             screen.blit(card_images[computer_suit][all_cards[i] - 2], (300+((all_cards[i]-2)*60), 450))
@@ -366,22 +360,16 @@ def main_game(screen, font, option1, option2, sub_option2, player_suit, computer
     pygame.time.delay(3000)
     
     
-# Main function
 def main():
-    # Initialize Pygame
     pygame.init()
 
-    # Set up the screen
     SCREEN_WIDTH = 1280
     SCREEN_HEIGHT = 720
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Diamond Card Auction Game")
-
-    # Define colors
+    
     WHITE = (255, 255, 255)
     BLACK = (0, 0, 0)
-
-    # Define font
     font = pygame.font.SysFont(None, 46)
 
     player_suit = get_player_suit(screen, font, 1)
@@ -394,7 +382,6 @@ def main():
     else:
         main_game(screen, font, option1, 3, option2 - 2, player_suit.lower(), computer_suit.lower())
 
-    # Quit Pygame
     pygame.quit()
-# Execute main function
+
 main()
